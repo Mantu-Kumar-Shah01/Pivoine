@@ -389,9 +389,6 @@
 
   function revealPage() {
     if (veil) veil.classList.add("gone");
-    document.body.classList.add("ready");
-    const heroEl = document.querySelector(".hero");
-    if (heroEl) heroEl.classList.add("in");
     drawCurrentFrame();
   }
 

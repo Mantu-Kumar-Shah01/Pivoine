@@ -266,8 +266,7 @@ button {
 
 /* Hero text is visible immediately upon page load, and secondary scenes reveal on scroll */
 .hero .ln > i,
-.in .ln > i,
-.ready .hero .ln > i {
+.in .ln > i {
   transform: none;
 }
 
@@ -278,8 +277,7 @@ button {
 }
 
 .hero .rise,
-.in .rise,
-.ready .hero .rise {
+.in .rise {
   opacity: 1;
   transform: none;
 }
