@@ -1,0 +1,14 @@
+{
+  "name": "pivoine-scroll-film",
+  "version": "1.0.0",
+  "description": "Continuous scroll-film website for Pivoine Peony Skincare",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "serve": "npx serve .",
+    "start": "node server.mjs"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

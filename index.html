@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PIVOINE — Peony Skincare | Continuous Scroll-Film</title>
+  <meta name="description" content="Peony renewal cream in a crystal jar with a lacquer cap. Continuous scroll-film experience.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Continuous Scroll-Film Canvas -->
+  <canvas id="film"></canvas>
+  
+  <!-- Top Progress Indicator -->
+  <div class="progress-bar" id="prog"></div>
+
+  <!-- Loading Preloader Veil -->
+  <div class="veil" id="veil">
+    <div class="veil-brand">PIVOINE</div>
+    <div class="veil-bar"><span id="veil-fill"></span></div>
+    <small class="veil-sub">Peony skincare · NYC Studio</small>
+  </div>
+
+  <!-- Floating Glass Nav Pill -->
+  <nav class="nav">
+    <div class="nav-pill">
+      <a class="brand" href="#top">PIVOINE</a>
+      <a class="link" href="#bloom">The Flower</a>
+      <a class="link" href="#cream">The Cream</a>
+      <a class="link" href="#texture">Texture</a>
+      <a class="link" href="#collection">The Line</a>
+      <a class="pbook" href="#collection">Shop Now</a>
+    </div>
+  </nav>
+
+  <!-- Narrative Scenes Overlaid in Clean Air -->
+  <header class="scene hero" id="top">
+    <div class="col">
+      <p class="eyebrow rise" style="--d: 0.1s">Peony Skincare · Small Batches</p>
+      <h1 class="display title">
+        <span class="ln"><i>Peony,</i></span>
+        <span class="ln"><i style="--d: 0.22s">at first <em>bloom.</em></i></span>
+      </h1>
+      <p class="body rise" style="--d: 0.4s">
+        A renewal cream made with wild peony extract and triple hyaluronic acid, in a crystal jar you will want to keep forever.
+      </p>
+      <div class="actions rise" style="--d: 0.55s">
+        <button class="btn" type="button">Add to Bag · $128</button>
+        <a class="tlink" href="#collection">See the line</a>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll <i></i></div>
+  </header>
+
+  <section class="scene" id="bloom">
+    <div class="col">
+      <div class="rule"></div>
+      <p class="eyebrow"><span class="ln"><i>The Flower</i></span></p>
+      <h2 class="display">
+        <span class="ln"><i>Picked at dawn,</i></span>
+        <span class="ln"><i style="--d: 0.1s"><em>when it's fullest.</em></i></span>
+      </h2>
+      <p class="body rise" style="--d: 0.2s">
+        We pick our peonies early in the morning, when petals hold the most osmotic water, and cold-press them the same day to lock in living floral vitality.
+      </p>
+    </div>
+  </section>
+
+  <section class="scene" id="cream">
+    <div class="col">
+      <div class="rule"></div>
+      <p class="eyebrow"><span class="ln"><i>The Formula</i></span></p>
+      <h2 class="display"><span class="ln"><i>One jar, <em>three rituals.</em></i></span></h2>
+      <div class="tlist">
+        <div class="trow rise" style="--d: 0.08s">
+          <span class="num">i</span>
+          <h3>All-Day Hydration</h3>
+          <p>Hyaluronic acid holds water in your skin from morning to night.</p>
+        </div>
+        <div class="trow rise" style="--d: 0.16s">
+          <span class="num">ii</span>
+          <h3>Smoother-Looking Skin</h3>
+          <p>Fine lines look softened and relaxed after 28 days of daily ritual.</p>
+        </div>
+        <div class="trow rise" style="--d: 0.24s">
+          <span class="num">iii</span>
+          <h3>Calm &amp; Even Tone</h3>
+          <p>Peony polyphenols take the edge off redness and stress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="texture">
+    <div class="col">
+      <div class="rule"></div>
+      <p class="eyebrow"><span class="ln"><i>The Texture</i></span></p>
+      <h2 class="display">
+        <span class="ln"><i>Whipped air,</i></span>
+        <span class="ln"><i style="--d: 0.1s"><em>then it melts.</em></i></span>
+      </h2>
+      <p class="body rise" style="--d: 0.2s">
+        It feels light when you pick it up and sinks in instantly as soon as it touches warm skin. No film, no shine, just a cashmere touch.
+      </p>
+    </div>
+  </section>
+
+  <!-- Complete Product Catalog Grid -->
+  <section class="collection" id="collection">
+    <div class="chead">
+      <p class="eyebrow rise">The Line</p>
+      <h2 class="display rise" style="--d: 0.08s">Four pieces, <em>one peony.</em></h2>
+      <p class="body rise" style="--d: 0.16s">Every piece comes in the same heavy crystal with a lacquer cap, and every one of them is endlessly refillable.</p>
+    </div>
+    
+    <div class="grid">
+      <article class="pcard rise" style="--d: 0.06s">
+        <div class="pframe"><img src="catalog/cream.webp" alt="Peony Renewal Cream" loading="lazy"></div>
+        <div class="pinfo">
+          <h3>Renewal Cream</h3>
+          <p class="pnote">Peony · Hyaluronic acid</p>
+          <span class="pprice">$128</span>
+        </div>
+      </article>
+
+      <article class="pcard rise" style="--d: 0.12s">
+        <div class="pframe"><img src="catalog/serum.webp" alt="Peony Dew Serum" loading="lazy"></div>
+        <div class="pinfo">
+          <h3>Dew Serum</h3>
+          <p class="pnote">Peony · Niacinamide</p>
+          <span class="pprice">$96</span>
+        </div>
+      </article>
+
+      <article class="pcard rise" style="--d: 0.18s">
+        <div class="pframe"><img src="catalog/eye.webp" alt="Peony Eye Balm" loading="lazy"></div>
+        <div class="pinfo">
+          <h3>Eye Balm</h3>
+          <p class="pnote">Peony · Caffeine</p>
+          <span class="pprice">$72</span>
+        </div>
+      </article>
+
+      <article class="pcard rise" style="--d: 0.24s">
+        <div class="pframe"><img src="catalog/oil.webp" alt="Peony Night Oil" loading="lazy"></div>
+        <div class="pinfo">
+          <h3>Night Oil</h3>
+          <p class="pnote">Peony · Rosehip</p>
+          <span class="pprice">$88</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-in">
+      <div class="fmain rise">
+        <div>
+          <p class="flogo">PIVOINE</p>
+          <p class="ftag">Peony skincare, made in small batches and shipped from New York. Every crystal jar can be refilled.</p>
+        </div>
+        <nav class="fcol">
+          <h4>Collection</h4>
+          <a href="#collection">Renewal Cream</a>
+          <a href="#collection">Dew Serum</a>
+          <a href="#collection">Eye Balm</a>
+          <a href="#collection">Night Oil</a>
+        </nav>
+        <nav class="fcol">
+          <h4>Studio</h4>
+          <a href="#">Our Story</a>
+          <a href="#">Refill Program</a>
+          <a href="#">Sustainability</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+      <div class="fbar rise">
+        <span>© 2026 Pivoine Botanical Skincare</span>
+        <div class="flegal">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="lenis.min.js"></script>
+  <!-- Frame Map -->
+  <script src="framemap.js"></script>
+  <!-- Multi-Threaded Canvas Scroll-Film Engine -->
+  <script src="film-engine.js"></script>
+</body>
+</html>

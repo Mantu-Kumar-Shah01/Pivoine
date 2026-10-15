@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Luxury Continuous Scroll-Film Web Experiences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 18mm 20mm 18mm;
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 8pt;
+        color: #64748b;
+      }
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --accent: #862e6e;
+      --accent-light: #f7eaf3;
+      --border: #e2e8f0;
+      --card-bg: #f8fafc;
+      --code-bg: #0f172a;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Plus Jakarta Sans", -apple-system, sans-serif;
+      --mono: "JetBrains Mono", monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      font-size: 10pt;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    /* Top Action Bar (Hidden in Print) */
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.4rem;
+      background: #0f172a;
+      color: #fff;
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+    }
+    .action-bar .badge {
+      background: rgba(226, 146, 198, 0.2);
+      color: #e292c6;
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+    }
+    .print-btn {
+      background: linear-gradient(135deg, #e292c6 0%, #a85890 100%);
+      color: #1a0817;
+      font-weight: 700;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 9pt;
+    }
+
+    /* Cover / Header Section */
+    .doc-header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .doc-category {
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: 26pt;
+      line-height: 1.15;
+      color: #0f172a;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+    h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+    .doc-meta {
+      display: flex;
+      gap: 2rem;
+      font-size: 8.5pt;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+    .doc-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* Section Headings */
+    h2 {
+      font-family: var(--serif);
+      font-size: 15pt;
+      color: #0f172a;
+      margin: 2.2rem 0 0.8rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      page-break-after: avoid;
+    }
+    h2::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 2px;
+      display: inline-block;
+    }
+    h3 {
+      font-size: 11.5pt;
+      color: var(--accent);
+      margin: 1.4rem 0 0.5rem;
+      font-weight: 700;
+      page-break-after: avoid;
+    }
+    h4 {
+      font-size: 10pt;
+      color: #0f172a;
+      margin: 1rem 0 0.4rem;
+      font-weight: 700;
+    }
+
+    p { margin-bottom: 0.9rem; color: #334155; }
+    ul, ol { margin-left: 1.4rem; margin-bottom: 1rem; color: #334155; }
+    li { margin-bottom: 0.35rem; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+    th, td {
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td { background: #fff; }
+
+    /* Cards & Boxes */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+      page-break-inside: avoid;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+      page-break-inside: avoid;
+    }
+    .box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .box h4 { color: var(--accent); margin-top: 0; }
+
+    .callout {
+      border-left: 3.5px solid var(--accent);
+      background: var(--accent-light);
+      padding: 0.9rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.2rem 0;
+      page-break-inside: avoid;
+    }
+    .callout strong { color: var(--accent); }
+
+    /* Code Blocks */
+    pre {
+      background: var(--code-bg);
+      border-radius: 6px;
+      padding: 0.9rem 1.1rem;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 8pt;
+      line-height: 1.5;
+      color: #e2e8f0;
+      margin: 0.9rem 0;
+      page-break-inside: avoid;
+    }
+    code {
+      font-family: var(--mono);
+      background: #f1f5f9;
+      color: var(--accent);
+      padding: 0.15rem 0.35rem;
+      border-radius: 3px;
+      font-size: 8.5pt;
+    }
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    .diagram {
+      background: #0f172a;
+      color: #38bdf8;
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      line-height: 1.4;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
+      white-space: pre;
+      page-break-inside: avoid;
+    }
+
+    /* Print Formatting */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0 !important;
+      }
+      .action-bar { display: none !important; }
+      .card, .box, table, pre, .callout {
+        page-break-inside: avoid;
+      }
+      a { text-decoration: none; color: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Top Action Bar -->
+    <div class="action-bar">
+      <div class="badge">Architecture Specification · PDF Edition</div>
+      <button class="print-btn" onclick="window.print()">🖨️ Export to PDF</button>
+    </div>
+
+    <!-- Document Header / Title -->
+    <header class="doc-header">
+      <div class="doc-category">Technical Engineering Standard · Creative Frontend</div>
+      <h1>Building Continuous <em>Scroll-Film</em> Web Experiences</h1>
+      <p style="font-size: 11pt; color: #475569; margin-top: 0.4rem;">
+        An authoritative architectural blueprint for creating ultra-luxury, 60–120 FPS canvas-driven scroll experiences (inspired by <strong>Pivoine</strong> and <strong>Ascenta Studio</strong>).
+      </p>
+      <div class="doc-meta">
+        <span><strong>Author:</strong> Antigravity Creative Engineering</span>
+        <span><strong>Target:</strong> WebGL / Canvas 2D + Worker Pool</span>
+        <span><strong>Status:</strong> Production-Grade</span>
+      </div>
+    </header>
+
+    <!-- SECTION 1: EXECUTIVE SUMMARY & ARCHITECTURAL FOUNDATION -->
+    <section>
+      <h2>1. Executive Summary &amp; Core Architecture</h2>
+      <p>
+        Modern luxury web storytelling relies on <strong>Continuous Scroll-Films</strong>: single unbroken camera journeys through a 3D physical or botanical space where the user's scroll position scrubs the camera with surgical precision.
+      </p>
+
+      <div class="callout">
+        <strong>The Fundamental Rule: Never Use the HTML5 &lt;video&gt; Element for Scrubbing.</strong><br>
+        Standard video seeks incur a hardware seek latency of <strong>35–65 milliseconds per keyframe</strong>. When a user scrolls at normal speed, seeking cannot keep up, resulting in severe visual stuttering, dropped frames (~18 FPS ceiling), and frozen touch inertia on mobile iOS Safari.
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Conventional &lt;video&gt; Scrubbing</th>
+            <th>Continuous Scroll-Film Engine (Canvas + WebP)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Rendering Primitive</strong></td>
+            <td><code>&lt;video currentTime=...&gt;</code> (Seek lag)</td>
+            <td><strong>HTML5 <code>&lt;canvas&gt;</code> `{ alpha: false }`</strong> (Direct GPU blit)</td>
+          </tr>
+          <tr>
+            <td><strong>Frame Rate</strong></td>
+            <td>15–22 FPS during active scroll</td>
+            <td><strong>60 to 120 FPS</strong> locked display refresh rate</td>
+          </tr>
+          <tr>
+            <td><strong>Image Decoding</strong></td>
+            <td>Main JS thread (causes UI freezes)</td>
+            <td><strong>Multi-Threaded Web Workers</strong> via <code>createImageBitmap</code></td>
+          </tr>
+          <tr>
+            <td><strong>Memory Management</strong></td>
+            <td>Unbounded buffer, causes mobile crashes</td>
+            <td><strong>Sliding Cache Window (36–48 frames)</strong> with explicit <code>.close()</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2: THE 4-TIER STREAMING PIPELINE -->
+    <section>
+      <h2>2. The 4-Tier Memory &amp; Worker Architecture</h2>
+      <p>To support sequences of <strong>700 to 1,200 high-resolution frames</strong> without exceeding mobile memory budgets (~250MB WebKit Jetsam limit), the system utilizes a 4-tier progressive streaming architecture:</p>
+
+      <div class="diagram">
+[ User Smooth Scrolls via Lenis ]
+              │
+              ▼
+[ Compute Target Frame Cursor ] ──► Eased with Exponential Tau Filter (22ms)
+              │
+              ├──► TIER 1: Compressed WebP Memory Blobs (Loaded coarse-to-fine: Step 64 → 32 → 1)
+              │
+              ├──► TIER 2: Sliding Decoded Window (36-48 ImageBitmaps in GPU memory)
+              │
+              ├──► TIER 3: Web Worker Pool (Zero-copy off-thread image decodes)
+              │
+              └──► TIER 4: Explicit Disposal (Calls bmp.close() when frame leaves window)
+      </div>
+
+      <div class="grid-2">
+        <div class="box">
+          <h4>Sliding Window Cache</h4>
+          <p>Retains only 36–48 decoded frames around the active cursor. Discards furthest frames behind the scroll direction to ensure minimal RAM usage.</p>
+        </div>
+        <div class="box">
+          <h4>Zero-Copy Worker Transfer</h4>
+          <p>Decodes image bytes off the main UI thread via <code>createImageBitmap(blob)</code> and transfers ownership with zero memory duplication.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ASSET GENERATION & RIFE INTERPOLATION -->
+    <section>
+      <h2>3. Asset Production &amp; AI Frame Interpolation</h2>
+      <p>How to produce continuous photorealistic product journeys from scratch:</p>
+
+      <div class="card">
+        <h4>Step 1: 3D Render or Generative AI Video</h4>
+        <ul>
+          <li><strong>Generative AI (Kling AI / Runway Gen-3)</strong>: Prompt for slow, continuous macro camera movement (e.g. <em>"Slow macro camera tracking down into blooming peony petals, crystal cosmetic jar rising, studio lighting..."</em>).</li>
+          <li><strong>3D Software (Blender / Cinema 4D)</strong>: Set a smooth Bezier camera path around your product and export a clean 10–14 second sequence at 24/30 FPS.</li>
+        </ul>
+
+        <h4>Step 2: RIFE 4x AI Frame Interpolation (Crucial)</h4>
+        <p>A 10-second video has only 240 frames. Over a 4,000px page scroll, each frame lasts ~16px of scroll distance (feels like a slideshow). Passing the sequence through <strong>RIFE AI at 4x</strong> produces <strong>960 to 1,200 continuous frames</strong>. The pixel delta drops to <strong>~2.5px</strong> per step for absolute fluidity.</p>
+
+        <h4>Step 3: WebP Batch Compression with FFmpeg</h4>
+        <pre><code># Extract frames to ultra-lightweight WebP sequence
+ffmpeg -i product_animation.mp4 -vf "fps=60,scale=1920:1080" -vcodec libwebp -quality 82 -lossless 0 -compression_level 4 frames/f_%04d.webp</code></pre>
+      </div>
+    </section>
+
+    <!-- SECTION 4: DUAL-REEL ART DIRECTION -->
+    <section>
+      <h2>4. Dual-Reel Art Direction &amp; Typography</h2>
+      <div class="grid-2">
+        <div class="box">
+          <h4>Desktop Composition (16:9)</h4>
+          <p>Product kept in the <strong>center-right area (focal point <code>fx: 0.6</code>)</strong>. The <strong>left 30%</strong> remains clean negative space for editorial typography and actions.</p>
+        </div>
+        <div class="box">
+          <h4>Mobile Composition (9:16)</h4>
+          <p>Product positioned in the <strong>lower 60%</strong> of the viewport. Headlines sit anchored in the <strong>top 40%</strong> so text never occludes the product.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: COMPLETE PRODUCTION BOILERPLATE -->
+    <section>
+      <h2>5. Production Implementation Code</h2>
+
+      <h3>1. Web Worker Multi-Threaded Decoder</h3>
+      <pre><code>// Web Worker (Off-Thread Image Decoder)
+onmessage = async (e) => {
+  const { id, url } = e.data;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const blob = await res.blob();
+    const bmp = await createImageBitmap(blob);
+    postMessage({ id, bmp }, [bmp]); // Zero-copy transferable ownership
+  } catch (err) {
+    postMessage({ id, err: true });
+  }
+};</code></pre>
+
+      <h3>2. Canvas Blit &amp; Physics Loop (`film-engine.js`)</h3>
+      <pre><code>const canvas = document.getElementById("film");
+const ctx = canvas.getContext("2d", { alpha: false }); // Opaque 2D context
+const EASE_TAU = 22; // Inertia time-constant (ms)
+
+function renderLoop(time) {
+  const dt = time - lastTime;
+  lastTime = time;
+
+  // Exponential smoothing prevents frame skipping
+  const delta = targetFrame - curFrame;
+  curFrame = Math.abs(delta) > 0.001 
+    ? curFrame + delta * (1 - Math.exp(-Math.min(dt, 50) / EASE_TAU)) 
+    : targetFrame;
+
+  scheduleLookaheadDecodes();
+  drawCoverFitCanvas();
+
+  requestAnimationFrame(renderLoop);
+}
+
+// Lenis Smooth Scroll Listener
+const lenis = new Lenis({ lerp: 0.12, smoothWheel: true });
+lenis.on("scroll", ({ scroll }) => {
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  targetFrame = (scroll / maxScroll) * (TOTAL_FRAMES - 1);
+});</code></pre>
+    </section>
+
+    <!-- SECTION 6: PRODUCTION CHECKLIST -->
+    <section>
+      <h2>6. Production Checklist &amp; Mobile Guardrails</h2>
+      <div class="card">
+        <ul>
+          <li>✔ <strong>Opaque Canvas Context:</strong> Always initialize with <code>getContext("2d", { alpha: false })</code> to skip unnecessary GPU alpha compositing.</li>
+          <li>✔ <strong>Explicit Memory Deallocation:</strong> Always invoke <code>imageBitmap.close()</code> upon cache eviction. Browsers will not trigger GC fast enough during rapid scrubbing.</li>
+          <li>✔ <strong>Stable Viewport Units:</strong> Use <code>100svh</code> and <code>100lvh</code> to protect against mobile URL bar resize jitter.</li>
+          <li>✔ <strong>APCA Contrast Compliance:</strong> Maintain an APCA lightness contrast rating &gt; 80 for text placed on top of moving video backgrounds.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 8pt; color: #64748b; text-align: center;">
+      Engineering Luxury Continuous Scroll-Film Web Experiences · Antigravity Creative Engineering
+    </footer>
+
+  </div>
+
+</body>
+</html>
